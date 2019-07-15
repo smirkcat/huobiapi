@@ -7,13 +7,14 @@ import (
 
 	"math"
 
-	"github.com/bitly/go-simplejson"
-	"github.com/leizongmin/huobiapi/debug"
 	"sync"
+
+	"github.com/bitly/go-simplejson"
+	"github.com/smirkcat/huobiapi/debug"
 )
 
 // Endpoint 行情的Websocket入口
-var Endpoint = "wss://api.huobi.pro/ws"
+var Endpoint = "wss://api.huobi.co/ws"
 
 // ConnectionClosedError Websocket未连接错误
 var ConnectionClosedError = fmt.Errorf("websocket connection closed")

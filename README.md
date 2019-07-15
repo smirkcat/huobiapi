@@ -7,21 +7,21 @@
 本模块使用 [godep](https://github.com/golang/dep) 作为包管理工具
 
 ```bash
-dep ensure -v -add github.com/leizongmin/huobiapi
+dep ensure -v -add github.com/smirkcat/huobiapi
 ```
 
 ## Websocket 版行情数据订阅查询
 
 说明：返回的结果数据使用 [go-simplejson](https://github.com/bitly/go-simplejson) 存储
 
-详细代码参考 [examples](https://github.com/leizongmin/huobiapi/tree/master/examples) 目录
+详细代码参考 [examples](https://github.com/smirkcat/huobiapi/tree/master/examples) 目录
 
 ```go
 package main
 
 import (
     "fmt"
-    "github.com/leizongmin/huobiapi"
+    "github.com/smirkcat/huobiapi"
 )
 
 func main() {
@@ -54,7 +54,7 @@ package main
 
 import (
     "fmt"
-    "github.com/leizongmin/huobiapi"
+    "github.com/smirkcat/huobiapi"
 )
 
 func main() {
@@ -83,7 +83,7 @@ func main() {
 ```text
 MIT License
 
-Copyright (c) 2018 Zongmin Lei <leizongmin@gmail.com>
+Copyright (c) 2018 Zongmin Lei <smirkcat@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

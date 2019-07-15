@@ -19,10 +19,10 @@ func isGetMethod(method string) bool {
 	return false
 }
 
-/// 请求参数
+// ParamData 请求参数
 type ParamData = map[string]string
 
-/// 发送原始请求
+// SendRequest 发送原始请求
 func SendRequest(sign *Sign, method, scheme, host, path string, data ParamData) (*simplejson.Json, error) {
 	var body *bytes.Buffer
 	method = strings.ToUpper(method)
@@ -39,12 +39,11 @@ func SendRequest(sign *Sign, method, scheme, host, path string, data ParamData) 
 			signData[k] = v
 		}
 	}
-	if s, err := sign.Get(method, host, path, timestamp, signData); err != nil {
-		return nil, err
-	} else {
-		signData["Signature"] = s
-	}
-	path += "?" + encodeQueryString(signData)
+	signData["Signature"] = sign.Get(method, host, path, timestamp, signData)
+	strParams := Map2UrlQuery(MapValueEncodeURI(signData))
+	//strParams := Map2UrlQueryBySort(MapValueEncodeURI(signData))
+	path += "?" + strParams
+	//fmt.Println(path)
 	if isGetMethod(method) == false {
 		// POST 请求 JSON
 		if b, err := json.Marshal(data); err != nil {
@@ -80,7 +79,7 @@ func SendRequest(sign *Sign, method, scheme, host, path string, data ParamData) 
 	if err != nil {
 		return nil, err
 	}
-
+	//fmt.Println(string(resBody))
 	json, err := simplejson.NewJson(resBody)
 	if err != nil {
 		return nil, err
